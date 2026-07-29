@@ -1,0 +1,23 @@
+# Virtual environment
+sign_env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Large datasets
+data/
+Train_Alphabet/
+Test_Alphabet/
+landmarks/
+
+
+# Trained models
+*.h5
+*.pth
+*.pt
+*.pkl
+*.joblib
+
+# VS Code
+.vscode/
