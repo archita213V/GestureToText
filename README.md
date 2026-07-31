@@ -112,7 +112,7 @@ gestureTotext/
 │   ├── TrainLandmarks.csv
 │   └── TestLandmarks.csv
 │
-├── models/
+├── saved_models/
 │
 ├── notebooks/
 │
