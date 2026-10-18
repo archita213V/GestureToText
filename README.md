@@ -1,108 +1,121 @@
-# Sign Language to Text Converter
 
-## Overview
+<div align="center">
 
-The Sign Language to Text Converter is a Machine Learning project that recognizes American Sign Language (ASL) alphabet gestures and converts them into text. The project uses MediaPipe to detect hand landmarks, extracts landmark-based features, trains a Machine Learning model for gesture classification, and performs real-time prediction using a webcam.
+# 🤟 GestureToText
+### Sign Language to Text Converter
 
-The system is designed to provide an efficient and accurate method for recognizing hand gestures while being computationally lightweight by using landmark coordinates instead of raw images.
+<p>
+  <b>Bridging communication through Machine Learning 💙</b>
+</p>
+
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" />
+  <img src="https://img.shields.io/badge/MediaPipe-4285F4?style=for-the-badge&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" />
+  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" />
+</p>
+
+<p>
+  <img src="https://img.shields.io/badge/Domain-Machine%20Learning-8A2BE2?style=flat-square" />
+  <img src="https://img.shields.io/badge/Recognition-Real%20Time-00A86B?style=flat-square" />
+  <img src="https://img.shields.io/badge/Status-Development-orange?style=flat-square" />
+</p>
+
+</div>
 
 ---
 
-# Features
+## 🌟 Overview
 
-* Detects hand landmarks using MediaPipe.
-* Supports American Sign Language (ASL) alphabet recognition.
-* Extracts 21 hand landmarks (63 features).
-* Performs feature engineering using wrist-normalized coordinates.
-* Creates structured CSV datasets for training and testing.
-* Performs Exploratory Data Analysis (EDA).
-* Trains a Machine Learning classification model.
-* Evaluates model performance using standard metrics.
-* Saves the trained model for future predictions.
-* Supports real-time hand gesture recognition through a webcam.
+**GestureToText** is a Machine Learning project that recognizes American Sign Language (ASL) alphabet gestures and converts them into text.
+
+The system uses **MediaPipe** to detect hand landmarks, extracts landmark-based features, and trains a Random Forest classifier to recognize gestures. Real-time predictions are performed using webcam input.
+
+Instead of learning directly from raw images, the system uses numerical hand landmark coordinates, making the recognition pipeline lightweight and suitable for real-time applications.
+
+## ✨ Key Features
+
+- ✋ **Hand Detection:** Detects hand landmarks using MediaPipe.
+- 🔢 **63 Landmark Features:** Extracts 21 landmarks with x, y, and z coordinates.
+- ⚙️ **Feature Engineering:** Uses wrist-relative coordinate normalization.
+- 🧹 **Data Preprocessing:** Handles unreadable images and prepares input data.
+- 📊 **Exploratory Data Analysis:** Analyzes dataset structure, missing values, and class distribution.
+- 🧠 **Machine Learning:** Trains a Random Forest classifier for gesture recognition.
+- 📈 **Model Evaluation:** Uses accuracy, precision, recall, F1-score, and confusion matrix.
+- 💾 **Model Persistence:** Saves the trained model for future predictions.
+- 📷 **Real-Time Recognition:** Predicts ASL alphabet gestures through a webcam.
 
 ---
 
-# Project Workflow
+## 🔄 Project Workflow
 
+```mermaid
+flowchart TD
+    A["📁 ASL Image Dataset"] --> B["🧹 Data Cleaning"]
+    B --> C["🖼️ Image Preprocessing"]
+    C --> D["✋ MediaPipe Hand Detection"]
+    D --> E["📍 Extract 21 Hand Landmarks"]
+    E --> F["⚙️ Feature Engineering"]
+    F --> G["📄 Generate Landmark CSV"]
+    G --> H["📊 Exploratory Data Analysis"]
+    H --> I["🔀 Prepare Training and Testing Data"]
+    I --> J["🧠 Train Random Forest Classifier"]
+    J --> K["📈 Evaluate Model"]
+    K --> L["💾 Save Trained Model"]
+    L --> M["📷 Webcam Input"]
+    M --> N["🔤 Real-Time Gesture Prediction"]
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#111827
+    style F fill:#ede9fe,stroke:#7c3aed,color:#111827
+    style J fill:#dcfce7,stroke:#16a34a,color:#111827
+    style N fill:#fce7f3,stroke:#db2777,color:#111827
 ```
-Dataset Collection
-        │
-        ▼
-Load Dataset
-        │
-        ▼
-Data Cleaning
-        │
-        ▼
-Image Preprocessing
-        │
-        ▼
-Hand Detection (MediaPipe)
-        │
-        ▼
-Landmark Extraction
-        │
-        ▼
-Feature Engineering
-        │
-        ▼
-Create Landmark CSV
-        │
-        ▼
-Exploratory Data Analysis
-        │
-        ▼
-Data Preparation
-        │
-        ▼
-Model Training
-        │
-        ▼
-Model Evaluation
-        │
-        ▼
-Save Trained Model
-        │
-        ▼
-Real-Time Prediction
-```
 
 ---
 
-# Technologies Used
+## 🛠️ Tech Stack
 
-### Programming Language
-
-* Python
-
-### Libraries
-
-* OpenCV
-* MediaPipe
-* NumPy
-* Pandas
-* Matplotlib
-* Scikit-learn
-* Joblib
-
-### Machine Learning
-
-* Random Forest Classifier
-
-### Development Tools
-
-* Visual Studio Code
-* Jupyter Notebook
-* Git
-* GitHub
+| Category | Technologies |
+|---|---|
+| Programming Language | Python |
+| Computer Vision | OpenCV |
+| Hand Landmark Detection | MediaPipe |
+| Data Processing | NumPy, Pandas |
+| Visualization | Matplotlib |
+| Machine Learning | Scikit-learn, Random Forest |
+| Model Serialization | Joblib |
+| Development | VS Code, Jupyter Notebook |
+| Version Control | Git, GitHub |
 
 ---
 
-# Project Structure
+## 🧮 Feature Engineering
 
-```
-gestureTotext/
+GestureToText represents each detected hand using numerical landmark coordinates.
+
+Each hand contains **21 landmarks**, and each landmark has three coordinates:
+
+- `x` — horizontal position
+- `y` — vertical position
+- `z` — relative depth
+
+**Total features:**
+
+\[
+21 \times 3 = 63
+\]
+
+The wrist landmark is used as a reference point to calculate relative coordinates. This helps reduce the effect of changes in hand position.
+
+The resulting feature vectors are stored in structured CSV files and used as input for machine learning.
+
+---
+
+## 📂 Project Structure
+
+```text
+GestureToText/
 │
 ├── data/
 │   ├── Train_Alphabet/
@@ -138,205 +151,186 @@ gestureTotext/
 
 ---
 
-# Dataset
+## 📚 Dataset
 
-The project uses an American Sign Language (ASL) alphabet dataset consisting of separate training and testing folders.
+The project uses an American Sign Language alphabet image dataset organized into training and testing folders.
 
-Dataset Structure
-
-```
+```text
 Train_Alphabet/
-    A/
-    B/
-    C/
-    ...
-    Z/
+├── A/
+├── B/
+├── C/
+└── ... Z/
 
 Test_Alphabet/
-    A/
-    B/
-    C/
-    ...
-    Z/
+├── A/
+├── B/
+├── C/
+└── ... Z/
 ```
 
-Each class contains multiple images representing a single ASL alphabet.
+Each alphabet folder contains images representing its corresponding gesture. The project processes these images to extract hand landmarks and generate structured training and testing datasets.
 
 ---
 
-# Data Preprocessing
+## 🧠 Machine Learning Pipeline
 
-The preprocessing pipeline consists of the following steps:
+### 1. Data Preprocessing
+- Load training and testing images.
+- Remove unreadable or corrupted images.
+- Resize images and convert BGR to RGB.
+- Detect hands using MediaPipe.
 
-* Load all images from the dataset.
-* Remove unreadable or corrupted images.
-* Resize every image to a fixed resolution.
-* Convert images from BGR to RGB.
-* Detect hands using MediaPipe.
-* Extract 21 hand landmarks.
-* Normalize landmarks with respect to the wrist coordinate.
-* Store the extracted landmark coordinates into CSV files.
+### 2. Landmark Extraction
+- Extract 21 hand landmarks.
+- Collect x, y, and z coordinates.
+- Handle images where a hand cannot be detected.
 
----
+### 3. Feature Engineering
+- Normalize coordinates relative to the wrist.
+- Construct 63-dimensional feature vectors.
+- Store features and labels in CSV files.
 
-# Feature Engineering
+### 4. Model Training
+- Load the landmark datasets.
+- Separate features and target labels.
+- Train a Random Forest classifier.
+- Save the trained model using Joblib.
 
-The project uses landmark-based feature engineering.
+### 5. Evaluation
+Evaluate the model using:
 
-For each detected hand:
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Confusion matrix
+- Classification report
 
-* 21 landmarks are extracted.
-* Each landmark contains:
-
-  * x coordinate
-  * y coordinate
-  * z coordinate
-
-Total Features
-
-```
-21 × 3 = 63 Features
-```
-
-The wrist landmark is used as the reference point to normalize all coordinates, making the model more robust to changes in hand position.
-
----
-
-# Exploratory Data Analysis
-
-EDA includes:
-
-* Dataset shape
-* Missing value analysis
-* Duplicate value analysis
-* Statistical summary
-* Data types
-* Class distribution
-* Feature inspection
+### 6. Real-Time Prediction
+- Capture frames from the webcam.
+- Detect and extract hand landmarks.
+- Apply the same feature preprocessing used during training.
+- Predict the corresponding alphabet using the trained classifier.
 
 ---
 
-# Model Training
+## 🚀 Getting Started
 
-The project uses the Random Forest Classifier.
+### Prerequisites
 
-Training Steps
+- Python installed
+- Git installed
+- Webcam for real-time recognition
 
-1. Load training CSV.
-2. Separate features and labels.
-3. Encode class labels.
-4. Train the Random Forest model.
-5. Evaluate on testing data.
-6. Save the trained model.
-
----
-
-# Evaluation Metrics
-
-The model is evaluated using:
-
-* Accuracy
-* Precision
-* Recall
-* F1 Score
-* Confusion Matrix
-* Classification Report
-
----
-
-# Installation
-
-Clone the repository
+### 1. Clone the Repository
 
 ```bash
-git clone <repository_url>
+git clone https://github.com/archita213V/GestureToText.git
+cd GestureToText
 ```
 
-Move to the project directory
-
-```bash
-cd gestureTotext
-```
-
-Create a virtual environment
+### 2. Create a Virtual Environment
 
 ```bash
 python -m venv sign_env
 ```
 
-Activate the virtual environment
-
-Windows
+Activate it on Windows:
 
 ```bash
 sign_env\Scripts\activate
 ```
 
-Install dependencies
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
+If your `requirements.txt` is not complete, install the required libraries individually.
 
-# Usage
-
-Generate landmark CSV files
+### 4. Generate Landmark CSV Files
 
 ```bash
 python src/create_landmarks.py
 ```
 
-Perform Exploratory Data Analysis
+### 5. Perform Exploratory Data Analysis
 
 ```bash
 python src/eda.py
 ```
 
-Train the Machine Learning model
+### 6. Train the Model
 
 ```bash
 python src/train_model.py
 ```
 
-Run real-time prediction
+### 7. Evaluate the Model
+
+```bash
+python src/evaluate_model.py
+```
+
+### 8. Run Real-Time Recognition
 
 ```bash
 python src/realtime_prediction.py
 ```
 
----
-
-# Future Improvements
-
-* Word formation from detected alphabets.
-* Sentence generation.
-* Space and delete gesture recognition.
-* Text-to-Speech conversion.
-* Deep Learning model implementation.
-* Web application deployment.
-* Mobile application development.
-* Support for dynamic sign language gestures.
-* Improved recognition accuracy using advanced models.
+> **Note:** These commands assume the listed scripts and their dependencies are implemented as shown in the project structure. Ensure that dataset paths, saved model paths, and script interfaces match your actual code.
 
 ---
 
-# Applications
+## 🔮 Future Improvements
 
-* Communication assistance for hearing and speech-impaired individuals.
-* Educational platforms for learning sign language.
-* Human-computer interaction.
-* Accessibility tools.
-* Smart assistive systems.
-* Healthcare support applications.
+- 💬 Combine recognized letters into words and sentences.
+- ⌫ Add space, delete, and other text-editing gestures.
+- 🔊 Integrate text-to-speech functionality.
+- 🌐 Develop a web-based interface.
+- 📱 Build a mobile application.
+- 🤖 Explore deep learning approaches.
+- 🤟 Extend recognition to dynamic sign language gestures.
+- 📈 Improve robustness across different lighting conditions and hand positions.
 
 ---
 
-# Author
+## 🌍 Applications
 
-**Archita Verma**
+- Accessibility and communication assistance
+- Sign language learning tools
+- Educational applications
+- Human-computer interaction
+- Assistive technology solutions
 
-B.Tech Computer Science and Engineering
+---
 
-Machine Learning Enthusiast
+## 👩‍💻 Author
+
+<div align="center">
+
+### Archita Verma
+
+🎓 B.Tech Computer Science and Engineering  
+💡 Machine Learning Enthusiast
+
+<a href="https://github.com/archita213V">
+  <img src="https://img.shields.io/badge/GitHub-Archita%20Verma-181717?style=for-the-badge&logo=github" />
+</a>
+<a href="https://www.linkedin.com/in/archita-verma-b140282bb">
+  <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin" />
+</a>
+
+</div>
+
+---
+
+<div align="center">
+
+⭐ **If you find this project interesting, consider starring the repository!**
+
+*Built with Python, Computer Vision, and Machine Learning 💙*
+
+</div>
