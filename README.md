@@ -52,25 +52,22 @@ Instead of learning directly from raw images, the system uses numerical hand lan
 
 ```mermaid
 flowchart TD
-    A["📁 ASL Image Dataset"] --> B["🧹 Data Cleaning"]
-    B --> C["🖼️ Image Preprocessing"]
-    C --> D["✋ MediaPipe Hand Detection"]
-    D --> E["📍 Extract 21 Hand Landmarks"]
-    E --> F["⚙️ Feature Engineering"]
-    F --> G["📄 Generate Landmark CSV"]
-    G --> H["📊 Exploratory Data Analysis"]
-    H --> I["🔀 Prepare Training and Testing Data"]
-    I --> J["🧠 Train Random Forest Classifier"]
-    J --> K["📈 Evaluate Model"]
-    K --> L["💾 Save Trained Model"]
-    L --> M["📷 Webcam Input"]
-    M --> N["🔤 Real-Time Gesture Prediction"]
-
-    style A fill:#dbeafe,stroke:#2563eb,color:#111827
-    style F fill:#ede9fe,stroke:#7c3aed,color:#111827
-    style J fill:#dcfce7,stroke:#16a34a,color:#111827
-    style N fill:#fce7f3,stroke:#db2777,color:#111827
+    A["ASL Image Dataset"] --> B["Data Cleaning"]
+    B --> C["Image Preprocessing"]
+    C --> D["MediaPipe Hand Detection"]
+    D --> E["Extract 21 Hand Landmarks"]
+    E --> F["Feature Engineering: 63 Features"]
+    F --> G["Generate Landmark CSV"]
+    G --> H["Exploratory Data Analysis"]
+    H --> I["Prepare Training and Testing Data"]
+    I --> J["Train Random Forest Classifier"]
+    J --> K["Evaluate Model"]
+    K --> L["Save Trained Model"]
+    L --> M["Webcam Input"]
+    M --> N["Real-Time Gesture Prediction"]
 ```
+
+
 
 ---
 
